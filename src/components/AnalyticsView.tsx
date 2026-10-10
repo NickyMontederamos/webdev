@@ -116,7 +116,7 @@ Generated: ${new Date().toLocaleDateString()} | Agency Performance Summary
       </div>
 
       {/* Visual Conversion Funnel */}
-      <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-2xs">
+      <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-2xs animate-slide-up">
         <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-4">
           Agency Lead Conversion Funnel
         </h3>

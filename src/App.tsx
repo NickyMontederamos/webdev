@@ -3,7 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { isFirebaseAvailable } from './services/auth';
 import { User } from 'firebase/auth';
 import { Navbar, ActiveTab } from './components/Navbar';
 import { DashboardView } from './components/DashboardView';
@@ -14,47 +15,14 @@ import { AnalyticsView } from './components/AnalyticsView';
 import { LeadDetailModal } from './components/LeadDetailModal';
 import { initialLeads } from './data/initialLeads';
 import { Lead, NotificationItem } from './types';
-import { initAuth, googleSignIn, logout } from './services/auth';
+import { initAuth, googleSignIn, logout, getAuthInstance } from './services/auth';
 
-const initialNotifications: NotificationItem[] = [
-  {
-    id: 'notif-1',
-    title: 'Urgent Web Need Identified',
-    message: 'SynapseBio Therapeutics launched Phase II trial but lacks digital patient screening portal.',
-    type: 'high_priority',
-    timestamp: new Date(Date.now() - 1000 * 60 * 25).toISOString(),
-    read: false,
-    leadId: 'lead-4',
-  },
-  {
-    id: 'notif-2',
-    title: 'Mobile Traffic Bleed Detected',
-    message: 'Lumina Aesthetic Clinic has 14k Instagram followers with a 404 broken mobile booking link.',
-    type: 'lead_qualified',
-    timestamp: new Date(Date.now() - 1000 * 60 * 80).toISOString(),
-    read: false,
-    leadId: 'lead-1',
-  },
-  {
-    id: 'notif-3',
-    title: 'Consultation Confirmed',
-    message: 'Google Calendar discovery call with Dr. Chantal Mercier scheduled.',
-    type: 'calendar_booked',
-    timestamp: new Date(Date.now() - 1000 * 60 * 240).toISOString(),
-    read: true,
-    leadId: 'lead-4',
-  },
-];
+const initialNotifications: NotificationItem[] = [];
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('dashboard');
   const [leads, setLeads] = useState<Lead[]>(() => {
-    try {
-      const saved = localStorage.getItem('webpulse_leads_cache');
-      if (saved) return JSON.parse(saved);
-    } catch (e) {
-      // ignore
-    }
+    // Start with zero leads — no fake data, no localStorage cache
     return initialLeads;
   });
 
@@ -67,17 +35,15 @@ export default function App() {
   const [hasGoogleToken, setHasGoogleToken] = useState(false);
   const [isAuthLoading, setIsAuthLoading] = useState(false);
 
-  // Persist leads state
-  useEffect(() => {
-    try {
-      localStorage.setItem('webpulse_leads_cache', JSON.stringify(leads));
-    } catch (e) {
-      // ignore
-    }
-  }, [leads]);
+  // No persistence — data resets on reload for a clean slate
 
-  // Initialize Firebase Auth listener
+  // Initialize Firebase Auth listener (skip if Firebase unavailable)
   useEffect(() => {
+    if (!isFirebaseAvailable) {
+      setGoogleUser(null);
+      setHasGoogleToken(false);
+      return;
+    }
     const unsubscribe = initAuth(
       (user, token) => {
         setGoogleUser(user);

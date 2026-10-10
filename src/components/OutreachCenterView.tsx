@@ -53,7 +53,7 @@ export const OutreachCenterView: React.FC<OutreachCenterViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Top Banner: Connected Gmail Account & Deliverability Overview */}
-      <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-2xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-2xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4 animate-slide-up">
         <div className="flex items-center gap-3">
           <div className="p-2.5 rounded-xl bg-indigo-50 text-indigo-600 border border-indigo-100">
             <Mail className="w-5 h-5" />
@@ -178,7 +178,7 @@ export const OutreachCenterView: React.FC<OutreachCenterViewProps> = ({
       </div>
 
       {/* Pending Outreach Opportunities */}
-      <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-2xs">
+      <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-2xs animate-slide-up">
         <div className="flex items-center justify-between mb-3">
           <div>
             <h3 className="text-sm font-bold text-slate-900">

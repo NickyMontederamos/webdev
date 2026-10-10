@@ -110,7 +110,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* Quick Search & Actions */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 animate-slide-in-right">
             <div className="relative hidden lg:block w-48 xl:w-60">
               <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               <input

@@ -113,10 +113,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
       {/* KPI Stat Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
-        <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-2xs">
+        <div className="card-hover p-4 bg-white rounded-xl border border-slate-200 shadow-2xs animate-slide-up" style={{ animationDelay: "0ms" }}>
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-500">Active Leads</span>
-            <Users className="w-4 h-4 text-indigo-600" />
+            <div className="p-1.5 rounded-lg bg-indigo-50 animate-glow-pulse"><Users className="w-4 h-4 text-indigo-600" /></div>
           </div>
           <div className="mt-2 text-2xl font-bold text-slate-900 font-mono">{totalLeads}</div>
           <div className="mt-1 text-[11px] text-slate-500 flex items-center gap-1">
@@ -124,10 +124,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
         </div>
 
-        <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-2xs">
+        <div className="card-hover p-4 bg-white rounded-xl border border-slate-200 shadow-2xs animate-slide-up" style={{ animationDelay: "50ms" }}>
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-500">Avg Need Score</span>
-            <Target className="w-4 h-4 text-amber-600" />
+            <div className="p-1.5 rounded-lg bg-amber-50 animate-glow-pulse"><Target className="w-4 h-4 text-amber-600" /></div>
           </div>
           <div className="mt-2 text-2xl font-bold text-slate-900 font-mono">
             {avgScore}<span className="text-sm font-normal text-slate-400">/100</span>
@@ -137,10 +137,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
         </div>
 
-        <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-2xs">
+        <div className="card-hover p-4 bg-white rounded-xl border border-slate-200 shadow-2xs animate-slide-up" style={{ animationDelay: "100ms" }}>
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-500">Outreach Sent</span>
-            <Send className="w-4 h-4 text-blue-600" />
+            <div className="p-1.5 rounded-lg bg-blue-50 animate-glow-pulse"><Send className="w-4 h-4 text-blue-600" /></div>
           </div>
           <div className="mt-2 text-2xl font-bold text-slate-900 font-mono">{outreachCount}</div>
           <div className="mt-1 text-[11px] text-slate-500">
@@ -148,10 +148,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
         </div>
 
-        <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-2xs">
+        <div className="card-hover p-4 bg-white rounded-xl border border-slate-200 shadow-2xs animate-slide-up" style={{ animationDelay: "150ms" }}>
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-500">Calls Booked</span>
-            <Calendar className="w-4 h-4 text-emerald-600" />
+            <div className="p-1.5 rounded-lg bg-emerald-50 animate-glow-pulse"><Calendar className="w-4 h-4 text-emerald-600" /></div>
           </div>
           <div className="mt-2 text-2xl font-bold text-slate-900 font-mono">{meetingsCount}</div>
           <div className="mt-1 text-[11px] text-emerald-600 font-medium">
@@ -159,10 +159,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
         </div>
 
-        <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-2xs col-span-2 lg:col-span-1">
+        <div className="card-hover p-4 bg-white rounded-xl border border-slate-200 shadow-2xs col-span-2 lg:col-span-1 animate-slide-up" style={{ animationDelay: "200ms" }}>
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-500">Pipeline Value</span>
-            <DollarSign className="w-4 h-4 text-indigo-600" />
+            <div className="p-1.5 rounded-lg bg-indigo-50 animate-glow-pulse"><DollarSign className="w-4 h-4 text-indigo-600" /></div>
           </div>
           <div className="mt-2 text-2xl font-bold text-slate-900 font-mono">
             ${(pipelineValue / 1000).toFixed(1)}k

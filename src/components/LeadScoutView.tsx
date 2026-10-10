@@ -288,7 +288,7 @@ export const LeadScoutView: React.FC<LeadScoutViewProps> = ({
   return (
     <div className="space-y-5">
       {/* Search, Action & Scout Engine Bar */}
-      <div className="bg-white rounded-xl border border-slate-200 p-4 shadow-2xs space-y-3">
+      <div className="bg-white rounded-xl border border-slate-200 p-4 shadow-2xs space-y-3 animate-slide-up">
         <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
           {/* Search Input */}
           <div className="relative flex-1">

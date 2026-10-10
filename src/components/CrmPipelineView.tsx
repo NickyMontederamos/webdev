@@ -145,7 +145,7 @@ export const CrmPipelineView: React.FC<CrmPipelineViewProps> = ({
             return (
               <div
                 key={stage.id}
-                className="w-72 shrink-0 bg-slate-100/70 rounded-xl p-3 flex flex-col border border-slate-200/80"
+                className="w-72 shrink-0 bg-slate-100/70 rounded-xl p-3 flex flex-col border border-slate-200/80 hover:border-indigo-200 hover:shadow-lg transition-all animate-slide-up"
               >
                 {/* Column Header */}
                 <div className={`border-t-2 ${stage.color} pt-2 mb-3 flex items-start justify-between`}>
@@ -174,7 +174,7 @@ export const CrmPipelineView: React.FC<CrmPipelineViewProps> = ({
                       return (
                         <div
                           key={lead.id}
-                          className="bg-white rounded-lg p-3 border border-slate-200 shadow-2xs hover:shadow-md transition-shadow group flex flex-col justify-between"
+                          className="card-hover bg-white rounded-lg p-3 border border-slate-200 shadow-2xs hover:shadow-lg hover:border-indigo-300 transition-all group flex flex-col justify-between animate-slide-up"
                         >
                           <div
                             onClick={() => onSelectLead(lead.id)}
